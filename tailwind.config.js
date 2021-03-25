@@ -3,15 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      cursor: {
-        hidden: "none",
+      fontFamily: {
+        roboto: "Roboto",
+        "roboto-slab": "Roboto Slab",
       },
       spacing: {
-        vw3: "3vw",
-        vh70: "70vh",
-      },
-      translate: {
-        p60: "60%",
+        "8vw": "8vw",
       },
     },
   },
