@@ -29,8 +29,6 @@ function Home() {
     //transition when scrolling
     const scrollingAnimation = () => {
       const Home = document.getElementById("home");
-      const About = document.getElementById("about");
-      let scrolling = false;
       dynamicTextAnimation.current.classList.remove("duration-1000");
       scrollAnimation.current.classList.remove("duration-1000");
       dynamicTextAnimation.current.classList.add("duration-700");
@@ -78,9 +76,11 @@ function Home() {
         }, 200);
       }
     };
-    window.addEventListener("scroll", scrollingAnimation);
+    window.addEventListener("mousewheel", scrollingAnimation, false);
+    document.addEventListener("DOMMouseScroll", scrollingAnimation, false);
     return () => {
-      window.removeEventListener("scroll", scrollingAnimation);
+      window.removeEventListener("mousewheel", scrollingAnimation, false);
+      document.removeEventListener("DOMMouseScroll", scrollingAnimation, false);
     };
   }, []);
   return (

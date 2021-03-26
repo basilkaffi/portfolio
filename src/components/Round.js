@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-function Round(props) {
+import Picture from "./About/Picture";
+function Round() {
   const [smallest, setSmallest] = useState({});
   const [middle, setMiddle] = useState({});
   const [biggest, setBiggest] = useState({});
@@ -11,6 +12,9 @@ function Round(props) {
   const childContainer = useRef();
   const childEl = useRef();
   useEffect(() => {
+    setTimeout(() => {
+      container.current.classList.remove("opacity-0");
+    }, 600);
     let side = 50;
     let difference = 10;
     let minSide = 33;
@@ -135,9 +139,6 @@ function Round(props) {
         }px)`;
       }
     };
-    setTimeout(() => {
-      container.current.classList.remove("opacity-0");
-    }, 600);
     const hidePicture = () => {
       const About = document.getElementById("about");
       //appear
@@ -160,34 +161,15 @@ function Round(props) {
     };
     window.addEventListener("resize", resizing);
     window.addEventListener("mousemove", moving);
-    window.addEventListener("scroll", hidePicture);
+    window.addEventListener("mousewheel", hidePicture, false);
+    document.addEventListener("DOMMouseScroll", hidePicture, false);
     return () => {
       window.removeEventListener("resize", resizing);
       window.removeEventListener("mousemove", moving);
-      window.removeEventListener("scroll", hidePicture);
+      window.removeEventListener("mousewheel", hidePicture, false);
+      document.removeEventListener("DOMMouseScroll", hidePicture, false);
     };
   }, []);
-  // useEffect(() => {
-  //   const hidePicture = () => {
-  //     const About = document.getElementById("about");
-  //     //reset
-  //     if (
-  //       About.getBoundingClientRect().top > window.innerHeight / 8 ||
-  //       About.getBoundingClientRect().bottom < window.innerHeight
-  //     ) {
-  //       childEl.current.classList.add("scale-50", "opacity-0");
-  //     }
-  //   };
-  //   if (props.children) {
-  //     childEl.current.classList.remove("scale-50", "opacity-0");
-  //     window.addEventListener("scroll", hidePicture);
-  //   } else {
-  //     childEl.current.classList.add("scale-50");
-  //   }
-  //   return () => {
-  //     window.addEventListener("scroll", hidePicture);
-  //   };
-  // }, [props.children]);
   return (
     <div
       ref={container}
@@ -218,7 +200,7 @@ function Round(props) {
                 ref={childEl}
                 className="h-full w-full transform duration-700 scale-50 opacity-0"
               >
-                {props.children}
+                <Picture />
               </div>
             </div>
           </div>

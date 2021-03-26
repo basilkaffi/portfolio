@@ -36,9 +36,11 @@ function Project() {
         sectionNumberM.current.classList.add("opacity-0");
       }
     };
-    window.addEventListener("scroll", scrollingAnimation);
+    window.addEventListener("mousewheel", scrollingAnimation, false);
+    document.addEventListener("DOMMouseScroll", scrollingAnimation, false);
     return () => {
-      window.removeEventListener("scroll", scrollingAnimation);
+      window.removeEventListener("mousewheel", scrollingAnimation, false);
+      document.removeEventListener("DOMMouseScroll", scrollingAnimation, false);
     };
   }, []);
   return (

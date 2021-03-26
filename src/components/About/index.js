@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
-import Picture from "./Picture";
-function About({ setChild }) {
+function About() {
   const title = useRef();
   const text = useRef();
   const sectionTitle = useRef();
@@ -22,11 +21,10 @@ function About({ setChild }) {
         sectionTitleM.current.classList.remove("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.remove("opacity-0");
         text.current.classList.add("md:translate-x-10");
-        setChild(Picture());
       }
       //reset
       if (
-        About.getBoundingClientRect().top > window.innerHeight - 100 ||
+        About.getBoundingClientRect().top > window.innerHeight - 10 ||
         About.getBoundingClientRect().bottom < 50
       ) {
         text.current.classList.remove("md:translate-x-10");
@@ -38,9 +36,11 @@ function About({ setChild }) {
         sectionNumberM.current.classList.add("opacity-0");
       }
     };
-    window.addEventListener("scroll", scrollingAnimation);
+    window.addEventListener("mousewheel", scrollingAnimation, false);
+    document.addEventListener("DOMMouseScroll", scrollingAnimation, false);
     return () => {
-      window.removeEventListener("scroll", scrollingAnimation);
+      window.removeEventListener("mousewheel", scrollingAnimation, false);
+      document.removeEventListener("DOMMouseScroll", scrollingAnimation, false);
     };
   }, []);
   return (
