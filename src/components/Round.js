@@ -146,11 +146,11 @@ function Round() {
         childEl.current.classList.remove("scale-50", "opacity-0");
       }
       //reset
-      if (About.getBoundingClientRect().top > window.innerHeight / 8) {
+      if (About.getBoundingClientRect().top > window.innerHeight / 2) {
         childEl.current.classList.add("scale-50", "opacity-0");
       }
       //hide child container
-      if (About.getBoundingClientRect().bottom < window.innerHeight / 2) {
+      if (About.getBoundingClientRect().bottom < 50) {
         childContainer.current.style.transitionDuration = "800ms";
         childContainer.current.classList.add("opacity-0");
       }
@@ -161,13 +161,11 @@ function Round() {
     };
     window.addEventListener("resize", resizing);
     window.addEventListener("mousemove", moving);
-    window.addEventListener("mousewheel", hidePicture, false);
-    document.addEventListener("DOMMouseScroll", hidePicture, false);
+    window.addEventListener("wheel", hidePicture);
     return () => {
       window.removeEventListener("resize", resizing);
       window.removeEventListener("mousemove", moving);
-      window.removeEventListener("mousewheel", hidePicture, false);
-      document.removeEventListener("DOMMouseScroll", hidePicture, false);
+      window.removeEventListener("wheel", hidePicture);
     };
   }, []);
   return (

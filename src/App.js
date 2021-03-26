@@ -9,6 +9,7 @@ function App() {
   const load = useRef();
   useEffect(() => {
     load.current.style.transform = "translateY(-100vh)";
+    let section = "home";
     const Home = document.getElementById("home");
     const About = document.getElementById("about");
     const Project = document.getElementById("project");
@@ -18,26 +19,55 @@ function App() {
       Home.style.transitionDuration = "600ms";
       About.style.transitionDuration = "600ms";
       Project.style.transitionDuration = "600ms";
-      if (e.wheelDeltaY < 0) {
-        //scroll kebawah
-        Home.style.transform = `translateY(-${window.innerHeight}px)`;
-        About.style.transform = `translateY(-${window.innerHeight}px)`;
-        if (About.getBoundingClientRect().top === 0) {
-          About.style.transform = `translateY(0px)`;
-          Project.style.transform = `translateY(-${window.innerHeight * 2}px)`;
+      if (section === "home") {
+        if (e.deltaY > 0) {
+          //scroll kebawah
+          Home.style.transform = `translateY(-${window.innerHeight}px)`;
+          About.style.transform = `translateY(-${window.innerHeight}px)`;
+          // } else if (e.deltaY < 0) {
+          //   //scroll keatas
+          //   Home.style.transform = `translateY(0)`;
+          //   About.style.transform = `translateY(0)`;
         }
-      } else if (e.wheelDeltaY > 0) {
-        //scroll keatas
-        Home.style.transform = `translateY(0)`;
-        About.style.transform = `translateY(0)`;
-        Project.style.transform = `translateY(0)`;
+        if (About.getBoundingClientRect().top === 0) {
+          section = "about";
+          window.scrollTo(0, About.offsetTop);
+        }
+      } else if (section === "about") {
+        if (e.deltaY > 0) {
+          //scroll kebawah
+          Home.style.transform = `translateY(-${window.innerHeight * 2}px)`;
+          About.style.transform = `translateY(-${window.innerHeight * 2}px)`;
+          Project.style.transform = `translateY(-${window.innerHeight * 2}px)`;
+        } else if (e.deltaY < 0) {
+          //scroll keatas
+          Home.style.transform = `translateY(0)`;
+          About.style.transform = `translateY(0)`;
+        }
+        if (Home.getBoundingClientRect().top === 0) {
+          section = "home";
+        } else if (Project.getBoundingClientRect().top === 0) {
+          section = "project";
+        }
+      } else if (section === "project") {
+        // if (e.deltaY > 0) {
+        //   //scroll kebawah
+        //   About.style.transform = `translateY(-${window.innerHeight * 2}px)`;
+        //   Project.style.transform = `translateY(-${window.innerHeight * 2}px)`;
+        // } else
+        if (e.deltaY < 0) {
+          //scroll keatas
+          About.style.transform = `translateY(-${window.innerHeight}px)`;
+          Project.style.transform = `translateY(0)`;
+        }
+        if (About.getBoundingClientRect().top === 0) {
+          section = "about";
+        }
       }
     };
-    window.addEventListener("mousewheel", scrolling, false);
-    document.addEventListener("DOMMouseScroll", scrolling, false);
+    window.addEventListener("wheel", scrolling);
     return () => {
-      window.removeEventListener("mousewheel", scrolling, false);
-      document.removeEventListener("DOMMouseScroll", scrolling, false);
+      window.removeEventListener("wheel", scrolling);
     };
   }, []);
   return (

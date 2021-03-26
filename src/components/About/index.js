@@ -24,7 +24,7 @@ function About() {
       }
       //reset
       if (
-        About.getBoundingClientRect().top > window.innerHeight - 10 ||
+        About.getBoundingClientRect().top > window.innerHeight / 2 ||
         About.getBoundingClientRect().bottom < 50
       ) {
         text.current.classList.remove("md:translate-x-10");
@@ -36,11 +36,9 @@ function About() {
         sectionNumberM.current.classList.add("opacity-0");
       }
     };
-    window.addEventListener("mousewheel", scrollingAnimation, false);
-    document.addEventListener("DOMMouseScroll", scrollingAnimation, false);
+    window.addEventListener("wheel", scrollingAnimation);
     return () => {
-      window.removeEventListener("mousewheel", scrollingAnimation, false);
-      document.removeEventListener("DOMMouseScroll", scrollingAnimation, false);
+      window.removeEventListener("wheel", scrollingAnimation);
     };
   }, []);
   return (
@@ -75,7 +73,7 @@ function About() {
           </div>
           <div
             ref={sectionNumber}
-            className="md:text-8xl lg:text-9xl ml-3 transform -translate-y-4 duration-1000 delay-500 opacity-0"
+            className="md:text-8xl lg:text-9xl ml-3 transform -translate-y-4 duration-1000 opacity-0"
           >
             01
           </div>
@@ -90,7 +88,7 @@ function About() {
         </div>
         <div
           ref={sectionNumberM}
-          className="text-5xl ml-2 transform -translate-y-2 duration-1000 delay-500 opacity-0"
+          className="text-5xl ml-2 transform -translate-y-2 duration-1000 opacity-0"
         >
           01
         </div>

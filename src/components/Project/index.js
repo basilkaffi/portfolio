@@ -36,11 +36,9 @@ function Project() {
         sectionNumberM.current.classList.add("opacity-0");
       }
     };
-    window.addEventListener("mousewheel", scrollingAnimation, false);
-    document.addEventListener("DOMMouseScroll", scrollingAnimation, false);
+    window.addEventListener("wheel", scrollingAnimation);
     return () => {
-      window.removeEventListener("mousewheel", scrollingAnimation, false);
-      document.removeEventListener("DOMMouseScroll", scrollingAnimation, false);
+      window.removeEventListener("wheel", scrollingAnimation);
     };
   }, []);
   return (
@@ -64,7 +62,7 @@ function Project() {
           progress
         </div>
       </div>
-      <div className="hidden absolute md:block w-full transform translate-y-48 -translate-x-28">
+      <div className="hidden absolute md:block w-full transform translate-y-56 -translate-x-20">
         <div className="flex font-roboto-slab justify-end items-baseline">
           <div
             ref={sectionTitle}
@@ -74,7 +72,7 @@ function Project() {
           </div>
           <div
             ref={sectionNumber}
-            className="md:text-8xl lg:text-9xl ml-3 transform -translate-y-4 duration-1000 delay-500 opacity-0"
+            className="md:text-8xl lg:text-9xl ml-3 transform -translate-y-4 duration-1000 opacity-0"
           >
             02
           </div>
@@ -89,7 +87,7 @@ function Project() {
         </div>
         <div
           ref={sectionNumberM}
-          className="text-5xl ml-2 transform -translate-y-2 duration-1000 delay-500 opacity-0"
+          className="text-5xl ml-2 transform -translate-y-2 duration-1000 opacity-0"
         >
           02
         </div>

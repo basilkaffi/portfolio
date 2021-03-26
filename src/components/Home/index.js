@@ -76,11 +76,9 @@ function Home() {
         }, 200);
       }
     };
-    window.addEventListener("mousewheel", scrollingAnimation, false);
-    document.addEventListener("DOMMouseScroll", scrollingAnimation, false);
+    window.addEventListener("wheel", scrollingAnimation);
     return () => {
-      window.removeEventListener("mousewheel", scrollingAnimation, false);
-      document.removeEventListener("DOMMouseScroll", scrollingAnimation, false);
+      window.removeEventListener("wheel", scrollingAnimation);
     };
   }, []);
   return (
