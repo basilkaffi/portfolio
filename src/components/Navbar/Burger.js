@@ -24,10 +24,17 @@ function Burger({ sendClickState }) {
   useEffect(() => {
     setHover(false);
     if (clicked) {
-      line1.current.style.transform =
-        "rotate(-45deg) translate(-0.67rem,0.67rem)";
-      line3.current.style.transform =
-        "rotate(45deg) translate(-0.67rem,-0.67rem)";
+      if (window.innerWidth >= 768) {
+        line1.current.style.transform =
+          "rotate(-45deg) translate(-0.67rem,0.67rem)";
+        line3.current.style.transform =
+          "rotate(45deg) translate(-0.67rem,-0.67rem)";
+      } else {
+        line1.current.style.transform =
+          "rotate(-45deg) translate(-0.48rem,0.48rem)";
+        line3.current.style.transform =
+          "rotate(45deg) translate(-0.48rem,-0.48rem)";
+      }
       line1.current.style.width = "3.2rem";
       line2.current.style.width = "3.2rem";
       line3.current.style.width = "3.2rem";
@@ -70,22 +77,22 @@ function Burger({ sendClickState }) {
   }, [hovered, clicked]);
   return (
     <div
-      className="flex flex-col mx-4 my-1 h-14 w-max justify-evenly md:mx-16 md:my-auto md:items-end cursor-pointer"
+      className="flex flex-col m-4 h-10 md:h-14 w-max justify-evenly md:mx-16 md:my-auto md:items-end cursor-pointer"
       style={{ pointerEvents: "auto" }}
       onClick={() => setClick(!clicked)}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       <div
-        className="h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
+        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
         ref={line1}
       ></div>
       <div
-        className="h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
+        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
         ref={line2}
       ></div>
       <div
-        className="h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
+        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
         ref={line3}
       ></div>
     </div>

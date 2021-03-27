@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Picture from "./Picture";
 function Project() {
   const title = useRef();
   const text = useRef();
@@ -50,7 +51,7 @@ function Project() {
       <div className="flex flex-col mt-auto h-1/3 transform -translate-y-3 md:-translate-y-12 md:mt-0 md:ml-6">
         <div
           ref={title}
-          className="font-roboto-slab text-6xl pl-6 sm:text-7xl md:text-8xl mb-8 md:mb-0 transform duration-700 md:-translate-y-3/4 -translate-x-24 opacity-0"
+          className="font-roboto-slab text-4xl pl-6 sm:text-7xl md:text-8xl mb-8 md:mb-0 transform duration-700 md:-translate-y-3/4 -translate-x-24 opacity-0"
         >
           Kanban-Qu
         </div>
@@ -58,8 +59,13 @@ function Project() {
           ref={text}
           className="text-base font-roboto px-6 md:w-3/4 md:text-xl lg:text-2xl transform duration-1000 -translate-x-24 opacity-0"
         >
-          Kanban-qu is digital management tool designed to help visualize work
-          progress
+          <div>
+            Kanban-qu is digital management tool designed to help visualize work
+            progress.
+          </div>
+          <div className="px-4 py-1 font-roboto-slab inline-block text-gray-100 bg-red-600 hover:bg-red-500 duration-200 mt-6 md:mt-10 cursor-pointer">
+            visit site
+          </div>
         </div>
       </div>
       <div className="hidden absolute md:block w-full transform translate-y-56 -translate-x-20">

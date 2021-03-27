@@ -45,7 +45,7 @@ function Contact() {
       <div className="flex flex-col mt-auto h-1/3 transform -translate-y-3 md:-translate-y-12 md:mt-0 md:ml-6">
         <div
           ref={title}
-          className="font-roboto-slab text-6xl pl-6 sm:text-7xl md:text-8xl mb-8 md:mb-0 transform duration-700 md:-translate-y-3/4 -translate-x-24 opacity-0"
+          className="font-roboto-slab text-4xl pl-6 sm:text-7xl md:text-8xl mb-8 md:mb-0 transform duration-700 md:-translate-y-3/4 -translate-x-24 opacity-0"
         >
           Get In Touch
         </div>
@@ -62,7 +62,7 @@ function Contact() {
             ref={sectionNumber}
             className="md:text-8xl lg:text-9xl ml-3 transform -translate-y-4 duration-1000 opacity-0"
           >
-            04
+            03
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@ function Contact() {
           ref={sectionNumberM}
           className="text-5xl ml-2 transform -translate-y-2 duration-1000 opacity-0"
         >
-          04
+          03
         </div>
       </div>
     </div>

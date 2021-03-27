@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-function About() {
+import Picture from "./Picture";
+function About({ setChild }) {
   const title = useRef();
   const text = useRef();
   const sectionTitle = useRef();
@@ -21,6 +22,7 @@ function About() {
         sectionTitleM.current.classList.remove("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.remove("opacity-0");
         text.current.classList.add("md:translate-x-10");
+        setChild(Picture());
       }
       //reset
       if (
@@ -34,6 +36,7 @@ function About() {
         sectionNumber.current.classList.add("opacity-0");
         sectionTitleM.current.classList.add("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.add("opacity-0");
+        // setChild(null);
       }
     };
     window.addEventListener("transitionend", appearAnimation);
@@ -50,17 +53,18 @@ function About() {
       <div className="flex flex-col mt-auto h-1/3 transform -translate-y-3 md:-translate-y-12 md:mt-0 md:ml-6">
         <div
           ref={title}
-          className="font-roboto-slab text-6xl pl-6 sm:text-7xl md:text-8xl mb-8 md:mb-0 transform duration-700 md:-translate-y-3/4 -translate-x-24 opacity-0"
+          className="font-roboto-slab text-4xl pl-6 sm:text-7xl md:text-8xl mb-8 md:mb-0 transform duration-700 md:-translate-y-3/4 -translate-x-24 opacity-0"
         >
           Who Am I..
         </div>
         <div
           ref={text}
-          className="text-base font-roboto px-6 md:w-1/2 md:text-xl lg:text-2xl transform duration-1000 md:translate-y-2/3 -translate-x-24 opacity-0"
+          className="text-base font-roboto px-6 md:w-1/2 md:text-xl lg:text-2xl transform duration-1000 -translate-x-24 opacity-0"
         >
           My name is Basil Kaffi Ar Rahman. I am a fullstack developer.
-          Experienced developing website and apps using javascript. Familiar
-          with js stacks that can be checked in skills section.
+          Experienced developing website and apps using stacks such as reactjs,
+          express, sequelize, tailwind, sass, vue, postgres, mongodb, graphql,
+          redis, etc.
         </div>
       </div>
       <div className="hidden absolute md:block w-full transform translate-y-56 -translate-x-20">

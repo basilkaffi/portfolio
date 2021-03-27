@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 function DynamicText() {
-  const [words] = useState(["Basil Kaffi Ar R  ", "Fullstack Developer  "]);
+  const [words] = useState([
+    "Basil Kaffi Ar Rahman  ",
+    "Fullstack Developer  ",
+  ]);
   const [word, setWord] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   useEffect(() => {

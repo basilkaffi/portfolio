@@ -4,30 +4,25 @@ function Nav({ clicked }) {
   const top = useRef();
   const about = useRef();
   const project = useRef();
-  const skill = useRef();
   const contact = useRef();
   useEffect(() => {
     if (clicked) {
       top.current.classList.remove("opacity-0");
       about.current.classList.remove("-translate-y-8");
       project.current.classList.remove("-translate-y-10");
-      skill.current.classList.remove("-translate-y-12");
-      contact.current.classList.remove("-translate-y-14");
+      contact.current.classList.remove("-translate-y-12");
       setTimeout(() => {
         about.current.style.transitionDuration = "300ms";
         project.current.style.transitionDuration = "300ms";
-        skill.current.style.transitionDuration = "300ms";
         contact.current.style.transitionDuration = "300ms";
       }, 500);
     } else {
       top.current.classList.add("opacity-0");
       about.current.classList.add("-translate-y-8");
       project.current.classList.add("-translate-y-10");
-      skill.current.classList.add("-translate-y-12");
-      contact.current.classList.add("-translate-y-14");
+      contact.current.classList.add("-translate-y-12");
       about.current.style.transitionDuration = "1200ms";
       project.current.style.transitionDuration = "1200ms";
-      skill.current.style.transitionDuration = "1200ms";
       contact.current.style.transitionDuration = "1200ms";
     }
   }, [clicked]);
@@ -68,17 +63,9 @@ function Nav({ clicked }) {
           PROJECT
         </div>
         <div
-          ref={skill}
-          onClick={() => gotoSection("skills")}
-          className="text-gray-300 font-roboto-mono cursor-pointer font-semibold w-full py-5 px-12 transition-all transform -translate-y-12 nav-item-hover"
-          style={{ pointerEvents: "all", transitionDuration: "1200ms" }}
-        >
-          SKILLS
-        </div>
-        <div
           ref={contact}
           onClick={() => gotoSection("contact")}
-          className="text-gray-300 font-roboto-mono cursor-pointer font-semibold w-full py-5 px-12 transition-all transform -translate-y-14 nav-item-hover"
+          className="text-gray-300 font-roboto-mono cursor-pointer font-semibold w-full py-5 px-12 transition-all transform -translate-y-12 nav-item-hover"
           style={{ pointerEvents: "all", transitionDuration: "1200ms" }}
         >
           CONTACT

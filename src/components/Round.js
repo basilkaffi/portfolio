@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import Picture from "./About/Picture";
-function Round() {
+function Round(props) {
   const [smallest, setSmallest] = useState({});
   const [middle, setMiddle] = useState({});
   const [biggest, setBiggest] = useState({});
@@ -192,13 +191,13 @@ function Round() {
             <div
               style={children}
               ref={childContainer}
-              className="bg-gray-300 absolute flex justify-center items-center transform ease-out duration-300"
+              className="absolute flex justify-center items-center transform ease-out duration-300"
             >
               <div
                 ref={childEl}
                 className="h-full w-full transform duration-700 scale-50 opacity-0"
               >
-                <Picture />
+                {props.children}
               </div>
             </div>
           </div>
