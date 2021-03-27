@@ -6,6 +6,7 @@ import About from "./components/About";
 import Project from "./components/Project";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import Separator from "./components/Separator";
 import "./style/main.css";
 function App() {
   const load = useRef();
@@ -90,9 +91,13 @@ function App() {
       <Navbar />
       <div id="app" className="transform duration-700">
         <Home />
+        <Separator />
         <About />
+        <Separator />
         <Project />
+        <Separator />
         <Skills />
+        <Separator />
         <Contact />
       </div>
     </div>
