@@ -36,9 +36,9 @@ function Project() {
         sectionNumberM.current.classList.add("opacity-0");
       }
     };
-    window.addEventListener("wheel", scrollingAnimation);
+    window.addEventListener("transitionend", scrollingAnimation);
     return () => {
-      window.removeEventListener("wheel", scrollingAnimation);
+      window.removeEventListener("transitionend", scrollingAnimation);
     };
   }, []);
   return (

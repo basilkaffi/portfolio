@@ -150,22 +150,22 @@ function Round() {
         childEl.current.classList.add("scale-50", "opacity-0");
       }
       //hide child container
-      if (About.getBoundingClientRect().bottom < 50) {
+      if (About.getBoundingClientRect().bottom < window.innerHeight / 2) {
         childContainer.current.style.transitionDuration = "800ms";
         childContainer.current.classList.add("opacity-0");
       }
-      //reset opaciity child container
-      if (About.getBoundingClientRect().bottom > 150) {
+      //show opacity child container
+      if (About.getBoundingClientRect().bottom > 100) {
         childContainer.current.classList.remove("opacity-0");
       }
     };
     window.addEventListener("resize", resizing);
     window.addEventListener("mousemove", moving);
-    window.addEventListener("wheel", hidePicture);
+    window.addEventListener("transitionend", hidePicture);
     return () => {
       window.removeEventListener("resize", resizing);
       window.removeEventListener("mousemove", moving);
-      window.removeEventListener("wheel", hidePicture);
+      window.removeEventListener("transitionend", hidePicture);
     };
   }, []);
   return (

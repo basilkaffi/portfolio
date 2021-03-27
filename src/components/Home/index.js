@@ -9,23 +9,6 @@ function Home() {
   useEffect(() => {
     //transition dynamicText
     dynamicTextAnimation.current.classList.remove("-translate-x-full");
-    setTimeout(() => {
-      dynamicTextAnimation.current.classList.remove("opacity-0");
-    }, 500);
-    //transition description
-    setTimeout(() => {
-      descriptionAnimation.current.classList.remove("-translate-x-full");
-      setTimeout(() => {
-        descriptionAnimation.current.classList.remove("opacity-0");
-      }, 700);
-    }, 200);
-    //transition scroll
-    setTimeout(() => {
-      scrollAnimation.current.classList.remove("-translate-y-40");
-      setTimeout(() => {
-        scrollAnimation.current.classList.remove("opacity-0");
-      }, 500);
-    }, 600);
     //transition when scrolling
     const scrollingAnimation = () => {
       const Home = document.getElementById("home");
@@ -33,18 +16,7 @@ function Home() {
       scrollAnimation.current.classList.remove("duration-1000");
       dynamicTextAnimation.current.classList.add("duration-700");
       scrollAnimation.current.classList.add("duration-700");
-      //reset
-      if (Home.getBoundingClientRect().bottom < 100) {
-        dynamicTextAnimation.current.classList.add(
-          "-translate-x-24",
-          "opacity-0"
-        );
-        descriptionAnimation.current.classList.add(
-          "-translate-x-24",
-          "opacity-0"
-        );
-      }
-      //appear
+      //appear text and description
       if (Home.getBoundingClientRect().bottom > window.innerHeight / 2) {
         dynamicTextAnimation.current.classList.remove(
           "-translate-x-24",
@@ -55,16 +27,7 @@ function Home() {
           "opacity-0"
         );
       }
-      //reset
-      if (Home.getBoundingClientRect().bottom < window.innerHeight) {
-        if (window.innerWidth >= 768) {
-          scrollAnimation.current.classList.add("-translate-y-28");
-        } else {
-          scrollAnimation.current.classList.add("-translate-y-12");
-        }
-        scrollAnimation.current.classList.add("opacity-0");
-      }
-      //appear
+      //appear scroll element
       if (Home.getBoundingClientRect().bottom > window.innerHeight - 10) {
         setTimeout(() => {
           if (window.innerWidth >= 768) {
@@ -76,9 +39,36 @@ function Home() {
         }, 200);
       }
     };
-    window.addEventListener("wheel", scrollingAnimation);
+    const hide = () => {
+      const Home = document.getElementById("home");
+      dynamicTextAnimation.current.classList.remove("duration-1000");
+      scrollAnimation.current.classList.remove("duration-1000");
+      dynamicTextAnimation.current.classList.add("duration-700");
+      scrollAnimation.current.classList.add("duration-700");
+      if (Home.getBoundingClientRect().bottom < 100) {
+        dynamicTextAnimation.current.classList.add(
+          "-translate-x-24",
+          "opacity-0"
+        );
+        descriptionAnimation.current.classList.add(
+          "-translate-x-24",
+          "opacity-0"
+        );
+      }
+      if (Home.getBoundingClientRect().bottom < window.innerHeight) {
+        if (window.innerWidth >= 768) {
+          scrollAnimation.current.classList.add("-translate-y-28");
+        } else {
+          scrollAnimation.current.classList.add("-translate-y-12");
+        }
+        scrollAnimation.current.classList.add("opacity-0");
+      }
+    };
+    window.addEventListener("transitionstart", scrollingAnimation);
+    window.addEventListener("transitionend", hide);
     return () => {
-      window.removeEventListener("wheel", scrollingAnimation);
+      window.removeEventListener("transitionstart", scrollingAnimation);
+      window.removeEventListener("transitionend", hide);
     };
   }, []);
   return (
@@ -91,21 +81,21 @@ function Home() {
         <div className="px-8vw md:px-0 md:transform md:-translate-y-2/3">
           <div
             ref={dynamicTextAnimation}
-            className="transform duration-1000 md:-translate-y-1/3 -translate-x-full opacity-0"
+            className="transform duration-1000 md:-translate-y-1/3 -translate-x-24 opacity-0"
           >
             <DynamicText />
           </div>
           <br />
           <div
             ref={descriptionAnimation}
-            className="transform duration-1000 md:translate-y-full -translate-x-full opacity-0"
+            className="transform duration-1000 md:translate-y-full -translate-x-24 opacity-0"
           >
             <Description />
           </div>
         </div>
         <div
           ref={scrollAnimation}
-          className="transform duration-1000 -translate-y-40 opacity-0"
+          className="transform duration-1000 opacity-0"
         >
           <ScrollEl />
         </div>

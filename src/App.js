@@ -1,73 +1,82 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Round from "./components/Round";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Project from "./components/Project";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 import "./style/main.css";
 function App() {
   const load = useRef();
   useEffect(() => {
     load.current.style.transform = "translateY(-100vh)";
-    let section = "home";
+    const App = document.getElementById("app");
     const Home = document.getElementById("home");
     const About = document.getElementById("about");
     const Project = document.getElementById("project");
-    About.style.transform = `translateY(${window.innerHeight}px)`;
-    Project.style.transform = `translateY(${window.innerHeight * 2}px)`;
+    const Skills = document.getElementById("skills");
+    const Contact = document.getElementById("contact");
+    let start = 0;
+    let end = 0;
+    let direction = 0;
+    const touchstart = (e) => {
+      start = e.touches[0].clientY;
+    };
+    const touchmove = (e) => {
+      end = e.touches[0].clientY;
+      direction = start - end;
+    };
     const scrolling = (e) => {
-      Home.style.transitionDuration = "600ms";
-      About.style.transitionDuration = "600ms";
-      Project.style.transitionDuration = "600ms";
-      if (section === "home") {
-        if (e.deltaY > 0) {
-          //scroll kebawah
-          Home.style.transform = `translateY(-${window.innerHeight}px)`;
-          About.style.transform = `translateY(-${window.innerHeight}px)`;
-          // } else if (e.deltaY < 0) {
-          //   //scroll keatas
-          //   Home.style.transform = `translateY(0)`;
-          //   About.style.transform = `translateY(0)`;
+      if (e.deltaY > 0 || direction > 0) {
+        if (About.getBoundingClientRect().top > 0) {
+          App.style.transform = `translateY(-${About.offsetTop}px)`;
+        } else if (Project.getBoundingClientRect().top > 0) {
+          App.style.transform = `translateY(-${Project.offsetTop}px)`;
+        } else if (Skills.getBoundingClientRect().top > 0) {
+          App.style.transform = `translateY(-${Skills.offsetTop}px)`;
+        } else if (Contact.getBoundingClientRect().top > 0) {
+          App.style.transform = `translateY(-${Contact.offsetTop}px)`;
         }
-        if (About.getBoundingClientRect().top === 0) {
-          section = "about";
-          window.scrollTo(0, About.offsetTop);
-        }
-      } else if (section === "about") {
-        if (e.deltaY > 0) {
-          //scroll kebawah
-          Home.style.transform = `translateY(-${window.innerHeight * 2}px)`;
-          About.style.transform = `translateY(-${window.innerHeight * 2}px)`;
-          Project.style.transform = `translateY(-${window.innerHeight * 2}px)`;
-        } else if (e.deltaY < 0) {
-          //scroll keatas
-          Home.style.transform = `translateY(0)`;
-          About.style.transform = `translateY(0)`;
-        }
-        if (Home.getBoundingClientRect().top === 0) {
-          section = "home";
-        } else if (Project.getBoundingClientRect().top === 0) {
-          section = "project";
-        }
-      } else if (section === "project") {
-        // if (e.deltaY > 0) {
-        //   //scroll kebawah
-        //   About.style.transform = `translateY(-${window.innerHeight * 2}px)`;
-        //   Project.style.transform = `translateY(-${window.innerHeight * 2}px)`;
-        // } else
-        if (e.deltaY < 0) {
-          //scroll keatas
-          About.style.transform = `translateY(-${window.innerHeight}px)`;
-          Project.style.transform = `translateY(0)`;
-        }
-        if (About.getBoundingClientRect().top === 0) {
-          section = "about";
+      } else if (e.deltaY < 0 || direction < 0) {
+        if (Skills.getBoundingClientRect().top < 0) {
+          App.style.transform = `translateY(-${Skills.offsetTop}px)`;
+        } else if (Project.getBoundingClientRect().top < 0) {
+          App.style.transform = `translateY(-${Project.offsetTop}px)`;
+        } else if (About.getBoundingClientRect().top < 0) {
+          App.style.transform = `translateY(-${About.offsetTop}px)`;
+        } else if (Home.getBoundingClientRect().top < 0) {
+          App.style.transform = `translateY(-${Home.offsetTop}px)`;
         }
       }
     };
     window.addEventListener("wheel", scrolling);
+    App.addEventListener("touchstart", touchstart, {
+      passive: false,
+      capture: true,
+    });
+    App.addEventListener("touchmove", touchmove, {
+      passive: false,
+      capture: true,
+    });
+    App.addEventListener("touchend", scrolling, {
+      passive: false,
+      capture: true,
+    });
     return () => {
       window.removeEventListener("wheel", scrolling);
+      App.removeEventListener("touchstart", touchstart, {
+        passive: false,
+        capture: true,
+      });
+      App.removeEventListener("touchmove", touchmove, {
+        passive: false,
+        capture: true,
+      });
+      App.removeEventListener("touchend", scrolling, {
+        passive: false,
+        capture: true,
+      });
     };
   }, []);
   return (
@@ -79,9 +88,13 @@ function App() {
       ></div>
       <Round />
       <Navbar />
-      <Home />
-      <About />
-      <Project />
+      <div id="app" className="transform duration-700">
+        <Home />
+        <About />
+        <Project />
+        <Skills />
+        <Contact />
+      </div>
     </div>
   );
 }
