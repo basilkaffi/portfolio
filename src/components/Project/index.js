@@ -84,7 +84,7 @@ function Project() {
       container.current.style.opacity = "0";
       setTimeout(() => {
         container.current.style.opacity = "1";
-      }, 400);
+      }, 200);
     } else if (direction === "left") {
       index === 2 ? setIndex(1) : setIndex(0);
       if (index === 0) {
@@ -93,13 +93,13 @@ function Project() {
       container.current.style.opacity = "0";
       setTimeout(() => {
         container.current.style.opacity = "1";
-      }, 400);
+      }, 200);
     }
   };
   useEffect(() => {
     setTimeout(() => {
       setProject(projects[index]);
-    }, 300);
+    }, 150);
   }, [index]);
   useEffect(() => {
     const scrollingAnimation = () => {
@@ -151,7 +151,7 @@ function Project() {
       </div>
       <div
         ref={container}
-        className="flex flex-col w-full mt-auto h-1/4 md:h-1/3 transform duration-200 md:-translate-y-12 md:mt-0 md:ml-6"
+        className="flex flex-col w-full mt-auto h-1/4 md:h-1/3 transform duration-100 md:-translate-y-12 md:mt-0 md:ml-6"
       >
         <div
           ref={title}

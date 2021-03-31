@@ -47,14 +47,15 @@ function App() {
       }
     };
     const distributeSection = () => {
-      if (Home.getBoundingClientRect().top === 0) {
+      if (Home.getBoundingClientRect().top <= window.innerHeight / 2) {
         setSection("home");
-      } else if (About.getBoundingClientRect().top === 0) {
+      }
+      if (About.getBoundingClientRect().top <= window.innerHeight / 2) {
         setSection("about");
       }
     };
     window.addEventListener("wheel", scrolling);
-    window.addEventListener("transitionend", distributeSection);
+    window.addEventListener("transitionstart", distributeSection);
     App.addEventListener("touchstart", touchstart, {
       passive: false,
       capture: true,

@@ -167,7 +167,7 @@ function Round({ section }) {
       ) {
         childEl.current.classList.remove("scale-50", "opacity-0");
       }
-      //reset
+      //hide
       if (
         Section.getBoundingClientRect().top < 0 ||
         Section.getBoundingClientRect().bottom > window.innerHeight
@@ -175,6 +175,7 @@ function Round({ section }) {
         childEl.current.classList.add("scale-50", "opacity-0");
       }
     };
+    const hide = () => {};
     const changePicture = () => {
       switch (section) {
         case "home":
@@ -188,10 +189,11 @@ function Round({ section }) {
           break;
       }
     };
-    window.addEventListener("transitionstart", animation);
+    window.addEventListener("transitionend", animation);
+    window.addEventListener("transitionstart", hide);
     window.addEventListener("transitionend", changePicture);
     return () => {
-      window.removeEventListener("transitionstart", animation);
+      window.removeEventListener("transitionend", animation);
       window.removeEventListener("transitionend", changePicture);
     };
   }, [section]);
