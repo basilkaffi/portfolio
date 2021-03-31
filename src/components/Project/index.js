@@ -11,6 +11,8 @@ function Project() {
   const sectionTitleM = useRef();
   const sectionNumberM = useRef();
   const buttonContainerM = useRef();
+  const pictureContainer = useRef();
+  const pictureContainerM = useRef();
   const buttons = () => {
     return (
       <>
@@ -117,6 +119,10 @@ function Project() {
         sectionTitleM.current.classList.remove("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.remove("opacity-0");
         buttonContainerM.current.classList.remove("opacity-0");
+        pictureContainer.current.classList.add("delay-500");
+        pictureContainerM.current.classList.add("delay-500");
+        pictureContainer.current.classList.remove("opacity-0");
+        pictureContainerM.current.classList.remove("opacity-0");
         text.current.classList.add("md:translate-x-10");
       }
       //reset
@@ -125,6 +131,8 @@ function Project() {
         Project.getBoundingClientRect().bottom < 50
       ) {
         text.current.classList.remove("md:translate-x-10");
+        pictureContainer.current.classList.remove("delay-500");
+        pictureContainerM.current.classList.remove("delay-500");
         text.current.classList.add("-translate-x-24", "opacity-0");
         title.current.classList.add("-translate-x-24", "opacity-0");
         sectionTitle.current.classList.add("translate-y-full", "opacity-0");
@@ -133,6 +141,8 @@ function Project() {
         sectionTitleM.current.classList.add("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.add("opacity-0");
         buttonContainerM.current.classList.add("opacity-0");
+        pictureContainer.current.classList.add("opacity-0");
+        pictureContainerM.current.classList.add("opacity-0");
       }
     };
     window.addEventListener("transitionend", scrollingAnimation);
@@ -146,7 +156,10 @@ function Project() {
       style={{ minHeight: "625px", textShadow: "0 0 5px #11182777" }}
       className="text-gray-200 h-screen w-full z-0 flex flex-col md:flex-row md:items-center"
     >
-      <div className="md:hidden absolute w-full h-full">
+      <div
+        ref={pictureContainerM}
+        className="md:hidden absolute w-full h-full transform duration-1000 opacity-0"
+      >
         <Picture image={project.image} />
       </div>
       <div
@@ -169,7 +182,14 @@ function Project() {
           </div>
         </div>
       </div>
-      <div className="absolute hidden md:block">
+      <div
+        ref={pictureContainer}
+        style={{
+          zIndex: "-10",
+          transitionDuration: "1000ms",
+        }}
+        className="absolute hidden md:block opacity-0"
+      >
         <Picture image={project.image} />
       </div>
       <div
