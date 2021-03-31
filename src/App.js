@@ -9,10 +9,7 @@ import Separator from "./components/Separator";
 import "./style/main.css";
 function App() {
   const load = useRef();
-  const [element, setElement] = useState();
-  const getElement = (el) => {
-    setElement(el);
-  };
+  const [section, setSection] = useState("home");
   useEffect(() => {
     load.current.style.transform = "translateY(-100vh)";
     const App = document.getElementById("app");
@@ -49,7 +46,15 @@ function App() {
         }
       }
     };
+    const distributeSection = () => {
+      if (Home.getBoundingClientRect().top === 0) {
+        setSection("home");
+      } else if (About.getBoundingClientRect().top === 0) {
+        setSection("about");
+      }
+    };
     window.addEventListener("wheel", scrolling);
+    window.addEventListener("transitionend", distributeSection);
     App.addEventListener("touchstart", touchstart, {
       passive: false,
       capture: true,
@@ -64,6 +69,7 @@ function App() {
     });
     return () => {
       window.removeEventListener("wheel", scrolling);
+      window.removeEventListener("transitionend", distributeSection);
       App.removeEventListener("touchstart", touchstart, {
         passive: false,
         capture: true,
@@ -85,12 +91,12 @@ function App() {
         style={{ zIndex: "1000" }}
         className="bg-gray-800 absolute h-screen w-full transform duration-1000"
       ></div>
-      <Round>{element}</Round>
+      <Round section={section} />
       <Navbar />
       <div id="app" className="transform duration-700">
         <Home />
         <Separator />
-        <About setChild={getElement} />
+        <About />
         <Separator />
         <Project />
         <Separator />

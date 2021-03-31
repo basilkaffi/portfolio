@@ -22,7 +22,6 @@ function About({ setChild }) {
         sectionTitleM.current.classList.remove("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.remove("opacity-0");
         text.current.classList.add("md:translate-x-10");
-        setChild(Picture());
       }
       //reset
       if (
@@ -36,7 +35,6 @@ function About({ setChild }) {
         sectionNumber.current.classList.add("opacity-0");
         sectionTitleM.current.classList.add("translate-y-full", "opacity-0");
         sectionNumberM.current.classList.add("opacity-0");
-        // setChild(null);
       }
     };
     window.addEventListener("transitionend", appearAnimation);

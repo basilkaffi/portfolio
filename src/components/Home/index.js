@@ -2,7 +2,8 @@ import { useRef, useEffect } from "react";
 import DynamicText from "./DynamicText";
 import Description from "./Description";
 import ScrollEl from "./Scroll";
-function Home() {
+import Picture from "./Picture";
+function Home({ setChild }) {
   const dynamicTextAnimation = useRef();
   const descriptionAnimation = useRef();
   const scrollAnimation = useRef();
