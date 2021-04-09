@@ -3,6 +3,8 @@ function DynamicText() {
   const [words] = useState([
     "Basil Kaffi Ar Rahman  ",
     "Fullstack Developer  ",
+    "Frontend Developer  ",
+    "Backend Developer  ",
   ]);
   const [word, setWord] = useState("");
   const [showCursor, setShowCursor] = useState(true);

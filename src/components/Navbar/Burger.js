@@ -84,15 +84,15 @@ function Burger({ sendClickState }) {
       onMouseLeave={() => setHover(false)}
     >
       <div
-        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
+        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-500"
         ref={line1}
       ></div>
       <div
-        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
+        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-500"
         ref={line2}
       ></div>
       <div
-        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-700"
+        className="h-1 md:h-1.5 w-12 bg-gray-200 shadow-lg transition-all duration-500"
         ref={line3}
       ></div>
     </div>

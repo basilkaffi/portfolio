@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import Picture from "./Picture";
-import About from "../About/Picture";
+import Kanban from "./Kanban";
+import ECMS from "./ECMS";
+import ERP from "./ERP";
+import TechHaven from "./TechHaven";
 function Project() {
   const title = useRef();
   const text = useRef();
@@ -57,30 +60,36 @@ function Project() {
   };
   const projects = [
     {
-      title: "Kanban-Qu",
+      title: "My-Kanban",
       description:
-        "Kanban-qu is digital management tool designed to help visualize work progress. Developed using reactjs as frontend and Expressjs as backend.",
-      image: <About />,
+        "My-Kanban is realtime digital management tool designed to help visualize work progress. Developed using Reactjs, Expressjs, socket.io, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+      image: <Kanban />,
     },
     {
-      title: "Toko-Qu",
+      title: "Tech-Haven",
       description:
-        "Toko-qu is a webstore developed using Reactjs as frontend and Expressjs backend.",
-      image: null,
+        "Tech-Haven is an e-commerce website. Developed with TDD development process using Vuejs, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+      image: <TechHaven />,
     },
     {
-      title: "CMS Toko-Qu",
+      title: "E-Commerce CMS",
       description:
-        "Toko-qu is a CMS for toko-qu webstore developed using Vuejs as frontend and Expressjs backend.",
-      image: null,
+        "E-Commerce CMS is a content management system for Tech-Haven. Developed with TDD development process using Vuejs, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+      image: <ECMS />,
+    },
+    {
+      title: "ERP",
+      description: "ERP is one-page profiling website developed using reactjs.",
+      image: <ERP />,
     },
   ];
   const [index, setIndex] = useState(0);
   const [project, setProject] = useState(projects[index]);
   const changeProject = (direction) => {
     if (direction === "right") {
-      index === 0 ? setIndex(1) : setIndex(2);
-      if (index === 2) {
+      const idx = index + 1;
+      setIndex(idx);
+      if (index === 3) {
         setIndex(0);
       }
       container.current.style.opacity = "0";
@@ -88,9 +97,10 @@ function Project() {
         container.current.style.opacity = "1";
       }, 200);
     } else if (direction === "left") {
-      index === 2 ? setIndex(1) : setIndex(0);
+      const idx = index - 1;
+      setIndex(idx);
       if (index === 0) {
-        setIndex(2);
+        setIndex(3);
       }
       container.current.style.opacity = "0";
       setTimeout(() => {
@@ -177,9 +187,9 @@ function Project() {
           className="text-base font-roboto px-6 md:w-1/2 md:text-xl lg:text-2xl transform duration-1000 -translate-x-24 opacity-0"
         >
           <div>{project.description}</div>
-          <div className="px-4 py-1 font-roboto-slab inline-block text-gray-100 bg-red-600 hover:bg-red-500 duration-200 mt-6 md:mt-10 cursor-pointer">
-            visit site
-          </div>
+          {/* <div className="px-4 py-1 font-roboto-slab inline-block text-gray-100 bg-red-600 hover:bg-red-500 duration-200 mt-6 md:mt-10 cursor-pointer">
+            Details
+          </div> */}
         </div>
       </div>
       <div

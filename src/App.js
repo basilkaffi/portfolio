@@ -25,19 +25,19 @@ function App() {
     };
     const touchmove = (e) => {
       end = e.touches[0].clientY;
-      direction = start - end;
     };
     const scrolling = (e) => {
-      if (e.deltaY > 0 || direction > 0) {
-        if (About.getBoundingClientRect().top > 0) {
+      direction = start - end;
+      if (e.deltaY > 0 || direction > 100) {
+        if (About.getBoundingClientRect().top > 10) {
           App.style.transform = `translateY(-${About.offsetTop}px)`;
-        } else if (Project.getBoundingClientRect().top > 0) {
+        } else if (Project.getBoundingClientRect().top > 10) {
           App.style.transform = `translateY(-${Project.offsetTop}px)`;
-        } else if (Contact.getBoundingClientRect().top > 0) {
+        } else if (Contact.getBoundingClientRect().top > 10) {
           App.style.transform = `translateY(-${Contact.offsetTop}px)`;
         }
-      } else if (e.deltaY < 0 || direction < 0) {
-        if (Project.getBoundingClientRect().top < 0) {
+      } else if (e.deltaY < 0 || direction < -100) {
+        if (Project.getBoundingClientRect().top < -1) {
           App.style.transform = `translateY(-${Project.offsetTop}px)`;
         } else if (About.getBoundingClientRect().top < 0) {
           App.style.transform = `translateY(-${About.offsetTop}px)`;
@@ -45,13 +45,13 @@ function App() {
           App.style.transform = `translateY(-${Home.offsetTop}px)`;
         }
       }
+      end = window.innerHeight - 200;
     };
     const distributeSection = () => {
-      if (Home.getBoundingClientRect().top <= window.innerHeight / 2) {
-        setSection("home");
-      }
       if (About.getBoundingClientRect().top <= window.innerHeight / 2) {
         setSection("about");
+      } else if (Home.getBoundingClientRect().top <= window.innerHeight / 2) {
+        setSection("home");
       }
     };
     window.addEventListener("wheel", scrolling);

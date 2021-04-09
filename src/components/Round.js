@@ -6,7 +6,7 @@ function Round({ section }) {
   const [middle, setMiddle] = useState({});
   const [biggest, setBiggest] = useState({});
   const [children, setChildren] = useState({});
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState(<HomePicture />);
   const container = useRef();
   const smallRef = useRef();
   const middleRef = useRef();
@@ -151,31 +151,32 @@ function Round({ section }) {
   useEffect(() => {
     const animation = () => {
       const Section = document.getElementById(section);
-      //hide child container
-      // if (Section.getBoundingClientRect().bottom < window.innerHeight / 2) {
-      //   childContainer.current.style.transitionDuration = "800ms";
-      //   childContainer.current.classList.add("opacity-0");
-      // }
-      // //show opacity child container
-      // if (Section.getBoundingClientRect().bottom > 100) {
-      //   childContainer.current.classList.remove("opacity-0");
-      // }
-      //appear
-      if (
-        Section.getBoundingClientRect().top < window.innerHeight / 4 &&
-        Section.getBoundingClientRect().top >= 0
-      ) {
-        childEl.current.classList.remove("scale-50", "opacity-0");
-      }
-      //hide
-      if (
-        Section.getBoundingClientRect().top < 0 ||
-        Section.getBoundingClientRect().bottom > window.innerHeight
-      ) {
-        childEl.current.classList.add("scale-50", "opacity-0");
+      if (window.innerHeight <= 560) {
+        if (
+          Section.getBoundingClientRect().top < window.innerHeight / 2 &&
+          Section.getBoundingClientRect().top >= 0
+        ) {
+          childEl.current.classList.remove("scale-50", "opacity-0");
+        }
+        //hide
+        if (
+          Section.getBoundingClientRect().bottom < window.innerHeight / 2 ||
+          Section.getBoundingClientRect().bottom > window.innerHeight * 1.2
+        ) {
+          childEl.current.classList.add("scale-50", "opacity-0");
+        }
+      } else {
+        if (Section.getBoundingClientRect().top < window.innerHeight / 2) {
+          childEl.current.classList.remove("scale-50", "opacity-0");
+        }
+        if (
+          Section.getBoundingClientRect().top > window.innerHeight / 2 ||
+          Section.getBoundingClientRect().bottom < window.innerHeight - 15
+        ) {
+          childEl.current.classList.add("scale-50", "opacity-0");
+        }
       }
     };
-    const hide = () => {};
     const changePicture = () => {
       switch (section) {
         case "home":
@@ -189,9 +190,8 @@ function Round({ section }) {
           break;
       }
     };
-    window.addEventListener("transitionend", animation);
-    window.addEventListener("transitionstart", hide);
     window.addEventListener("transitionend", changePicture);
+    window.addEventListener("transitionend", animation);
     return () => {
       window.removeEventListener("transitionend", animation);
       window.removeEventListener("transitionend", changePicture);
@@ -225,7 +225,7 @@ function Round({ section }) {
             >
               <div
                 ref={childEl}
-                className="h-full w-full absolute flex justify-center items-center transform duration-500 scale-50 opacity-0"
+                className="h-full w-full absolute flex justify-center items-center transform duration-500"
               >
                 {picture}
               </div>

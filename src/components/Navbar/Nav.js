@@ -32,7 +32,7 @@ function Nav({ clicked }) {
     App.style.transform = `translateY(-${Section.offsetTop}px)`;
   };
   return (
-    <div className="flex h-screen sm:w-1/2 md:w-3/4 bg-gray-900 bg-opacity-95">
+    <div className="flex h-screen w-3/4 bg-gray-900 bg-opacity-95">
       <div className="font-roboto-slab text-center w-52 text-2xl my-14 sm:text-4xl sm:w-72 md:my-auto lg:w-80 mx-auto lg:text-5xl">
         <div
           ref={top}

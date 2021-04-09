@@ -89,7 +89,7 @@ function Home({ setChild }) {
           <br />
           <div
             ref={descriptionAnimation}
-            className="transform duration-1000 md:translate-y-full -translate-x-24 opacity-0"
+            className="transform duration-1000 md:translate-y-2/3 -translate-x-24 opacity-0"
           >
             <Description />
           </div>
