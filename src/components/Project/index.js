@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Picture from "./Picture";
 import Kanban from "./Kanban";
+import Inote from "./iNote";
 import ECMS from "./ECMS";
 import ERP from "./ERP";
 import TechHaven from "./TechHaven";
@@ -66,9 +67,15 @@ function Project() {
       image: <Kanban />,
     },
     {
+      title: "iNotes",
+      description:
+        "iNotes is a single page application for keep a notes. Developed using Reactjs, Apollo-server, graphQL, and mongodb.",
+      image: <Inote />,
+    },
+    {
       title: "Tech-Haven",
       description:
-        "Tech-Haven is an e-commerce website. Developed with TDD development process using Vuejs, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+        "Tech-Haven is an e-commerce SPA website. Developed with TDD development process using Vuejs, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
       image: <TechHaven />,
     },
     {
