@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.4050683e.chunk.css",
-    "main.js": "/portfolio/static/js/main.5da6b22b.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.5da6b22b.chunk.js.map",
+    "main.js": "/portfolio/static/js/main.6f80a1f1.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.6f80a1f1.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.482f4119.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.482f4119.js.map",
     "static/js/2.4eda3ea4.chunk.js": "/portfolio/static/js/2.4eda3ea4.chunk.js",
@@ -15,6 +15,9 @@
     "static/media/ico.addaee34.jpg": "/portfolio/static/media/ico.addaee34.jpg",
     "static/media/inote.43e33a9a.PNG": "/portfolio/static/media/inote.43e33a9a.PNG",
     "static/media/kanban.bcfa86c6.PNG": "/portfolio/static/media/kanban.bcfa86c6.PNG",
+    "static/media/linkedin.3ab0008f.svg": "/portfolio/static/media/linkedin.3ab0008f.svg",
+    "static/media/mail.9c2a9262.svg": "/portfolio/static/media/mail.9c2a9262.svg",
+    "static/media/medium.613fe0e5.svg": "/portfolio/static/media/medium.613fe0e5.svg",
     "static/media/picture.2d1e28ac.png": "/portfolio/static/media/picture.2d1e28ac.png",
     "static/media/tech-haven.dbf3e276.PNG": "/portfolio/static/media/tech-haven.dbf3e276.PNG"
   },
@@ -22,6 +25,6 @@
     "static/js/runtime-main.482f4119.js",
     "static/js/2.4eda3ea4.chunk.js",
     "static/css/main.4050683e.chunk.css",
-    "static/js/main.5da6b22b.chunk.js"
+    "static/js/main.6f80a1f1.chunk.js"
   ]
 }
