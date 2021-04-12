@@ -1,16 +1,24 @@
 import { useEffect, useRef } from "react";
 import img from "../../asset/ico.jpg";
+import medium from "../../asset/medium.svg";
+import linkedin from "../../asset/linkedin.svg";
+import mail from "../../asset/mail.svg";
 function Nav({ clicked }) {
   const top = useRef();
   const about = useRef();
   const project = useRef();
   const contact = useRef();
+  const info = useRef();
+  const linkedinLink = useRef();
+  const mediumLink = useRef();
+  const emailLink = useRef();
   useEffect(() => {
     if (clicked) {
       top.current.classList.remove("opacity-0");
       about.current.classList.remove("-translate-y-8");
       project.current.classList.remove("-translate-y-10");
       contact.current.classList.remove("-translate-y-12");
+      info.current.classList.remove("-translate-y-14");
       setTimeout(() => {
         about.current.style.transitionDuration = "300ms";
         project.current.style.transitionDuration = "300ms";
@@ -21,6 +29,7 @@ function Nav({ clicked }) {
       about.current.classList.add("-translate-y-8");
       project.current.classList.add("-translate-y-10");
       contact.current.classList.add("-translate-y-12");
+      info.current.classList.add("-translate-y-14");
       about.current.style.transitionDuration = "1200ms";
       project.current.style.transitionDuration = "1200ms";
       contact.current.style.transitionDuration = "1200ms";
@@ -69,6 +78,45 @@ function Nav({ clicked }) {
           style={{ pointerEvents: "all", transitionDuration: "1200ms" }}
         >
           CONTACT
+        </div>
+        <div
+          ref={info}
+          className="w-full h-16 sm:h-20 transition-all transform -translate-y-14"
+          style={{ pointerEvents: "all", transitionDuration: "1200ms" }}
+        >
+          <div className="w-3/4 h-full pt-4 pb-1 px-1 flex justify-between mx-auto">
+            <img
+              src={linkedin}
+              onClick={() => linkedinLink.current.click()}
+              className="bg-gray-200 p-2 sm:p-4 cursor-pointer transform duration-300 hover:scale-110 hover:bg-white pointer-events-auto"
+              alt="linkedin icon"
+            />
+            <img
+              src={medium}
+              onClick={() => mediumLink.current.click()}
+              className="bg-gray-200 p-2 sm:p-4 cursor-pointer transform duration-300 hover:scale-110 hover:bg-white pointer-events-auto"
+              alt="medium icon"
+            />
+            <img
+              src={mail}
+              onClick={() => emailLink.current.click()}
+              className="bg-gray-200 p-2 sm:p-4 cursor-pointer transform duration-300 hover:scale-110 hover:bg-white pointer-events-auto"
+              alt="mail icon"
+            />
+            <div className="absolute">
+              <a
+                href="https://www.linkedin.com/in/basil-ar-rahman-362325192/"
+                target="_blank"
+                ref={linkedinLink}
+              ></a>
+              <a
+                href="https://basilarr7.medium.com/"
+                target="_blank"
+                ref={mediumLink}
+              ></a>
+              <a href="mailto: basilarr7@gmail.com" ref={emailLink}></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

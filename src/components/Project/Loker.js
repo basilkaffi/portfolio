@@ -1,8 +1,8 @@
-import image from "../../asset/inote.PNG";
+import image from "../../asset/loker.PNG";
 function Picture() {
   return (
     <div className="w-full h-full">
-      <div className="absolute w-full h-full bg-gray-600 bg-opacity-10"></div>
+      <div className="absolute w-full h-full bg-gray-800 bg-opacity-30"></div>
       <img
         src={image}
         style={{
@@ -10,7 +10,7 @@ function Picture() {
           height: "100%",
           objectFit: "fit",
         }}
-        alt="kanban picture"
+        alt="loker picture"
       />
     </div>
   );

@@ -3,7 +3,7 @@ import Picture from "./Picture";
 import Kanban from "./Kanban";
 import Inote from "./iNote";
 import ECMS from "./ECMS";
-import ERP from "./ERP";
+import Loker from "./Loker";
 import TechHaven from "./TechHaven";
 function Project() {
   const title = useRef();
@@ -61,33 +61,34 @@ function Project() {
   };
   const projects = [
     {
-      title: "My-Kanban",
+      title: "Lowongan-Kerja",
       description:
-        "My-Kanban is realtime digital management tool designed to help visualize work progress. Developed using Reactjs, Expressjs, socket.io, sequelize, postgres, jsonwebtoken, and brcyptjs.",
-      image: <Kanban />,
+        "Lowongan-Kerja is a job vacancy website that connect employer and employee. Developed using Reactjs, Redux, Sass, Expressjs, sequelize, postgres, jsonwebtoken, multer, nodemailer, and brcyptjs.",
+      image: <Loker />,
     },
     {
       title: "iNotes",
       description:
-        "iNotes is a single page application for keep a notes. Developed using Reactjs, Apollo-server, graphQL, and mongodb.",
+        "iNotes is a single page application for keep a notes. Developed using Reactjs, Tailwind, Apollo-client, Apollo-server, graphQL, and mongodb.",
       image: <Inote />,
+    },
+    {
+      title: "My-Kanban",
+      description:
+        "My-Kanban is realtime digital management tool designed to help visualize work progress. Developed using Reactjs, Redux, Sass, Expressjs, socket.io, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+      image: <Kanban />,
     },
     {
       title: "Tech-Haven",
       description:
-        "Tech-Haven is an e-commerce SPA website. Developed with TDD development process using Vuejs, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+        "Tech-Haven is an e-commerce SPA website. Developed with TDD development process using Vuejs, Vuex, Sass, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
       image: <TechHaven />,
     },
     {
       title: "E-Commerce CMS",
       description:
-        "E-Commerce CMS is a content management system for Tech-Haven. Developed with TDD development process using Vuejs, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
+        "E-Commerce CMS is a content management system for Tech-Haven. Developed with TDD development process using Vuejs, Vuex, Sass, Expressjs, jest, sequelize, postgres, jsonwebtoken, and brcyptjs.",
       image: <ECMS />,
-    },
-    {
-      title: "ERP",
-      description: "ERP is one-page profiling website developed using reactjs.",
-      image: <ERP />,
     },
   ];
   const [index, setIndex] = useState(0);
@@ -96,7 +97,7 @@ function Project() {
     if (direction === "right") {
       const idx = index + 1;
       setIndex(idx);
-      if (index === 3) {
+      if (index === projects.length - 1) {
         setIndex(0);
       }
       container.current.style.opacity = "0";
@@ -107,7 +108,7 @@ function Project() {
       const idx = index - 1;
       setIndex(idx);
       if (index === 0) {
-        setIndex(3);
+        setIndex(projects.length - 1);
       }
       container.current.style.opacity = "0";
       setTimeout(() => {

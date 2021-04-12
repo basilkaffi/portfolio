@@ -61,8 +61,8 @@ function About({ setChild }) {
         >
           My name is Basil Kaffi Ar Rahman. I am a fullstack developer.
           Experienced developing website and apps using stacks such as reactjs,
-          express, sequelize, tailwind, sass, vue, postgres, mongodb, graphql,
-          redis, etc.
+          redux, express, sequelize, tailwind, sass, vue, vuex, postgres,
+          mongodb, graphql, redis, etc.
         </div>
       </div>
       <div className="hidden absolute md:block w-full transform translate-y-56 -translate-x-20">
