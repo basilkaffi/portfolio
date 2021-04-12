@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.4050683e.chunk.css",
-    "main.js": "/portfolio/static/js/main.6f80a1f1.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.6f80a1f1.chunk.js.map",
+    "main.js": "/portfolio/static/js/main.55725c5b.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.55725c5b.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.482f4119.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.482f4119.js.map",
     "static/js/2.4eda3ea4.chunk.js": "/portfolio/static/js/2.4eda3ea4.chunk.js",
@@ -11,11 +11,11 @@
     "static/css/main.4050683e.chunk.css.map": "/portfolio/static/css/main.4050683e.chunk.css.map",
     "static/js/2.4eda3ea4.chunk.js.LICENSE.txt": "/portfolio/static/js/2.4eda3ea4.chunk.js.LICENSE.txt",
     "static/media/e-cms.d9d6d409.PNG": "/portfolio/static/media/e-cms.d9d6d409.PNG",
-    "static/media/erp.810d1d38.PNG": "/portfolio/static/media/erp.810d1d38.PNG",
     "static/media/ico.addaee34.jpg": "/portfolio/static/media/ico.addaee34.jpg",
     "static/media/inote.43e33a9a.PNG": "/portfolio/static/media/inote.43e33a9a.PNG",
     "static/media/kanban.bcfa86c6.PNG": "/portfolio/static/media/kanban.bcfa86c6.PNG",
     "static/media/linkedin.3ab0008f.svg": "/portfolio/static/media/linkedin.3ab0008f.svg",
+    "static/media/loker.25b991e0.PNG": "/portfolio/static/media/loker.25b991e0.PNG",
     "static/media/mail.9c2a9262.svg": "/portfolio/static/media/mail.9c2a9262.svg",
     "static/media/medium.613fe0e5.svg": "/portfolio/static/media/medium.613fe0e5.svg",
     "static/media/picture.2d1e28ac.png": "/portfolio/static/media/picture.2d1e28ac.png",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.482f4119.js",
     "static/js/2.4eda3ea4.chunk.js",
     "static/css/main.4050683e.chunk.css",
-    "static/js/main.6f80a1f1.chunk.js"
+    "static/js/main.55725c5b.chunk.js"
   ]
 }
